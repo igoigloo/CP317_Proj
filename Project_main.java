@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Project_main {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("SplitGUI");
+        JFrame frame = new JFrame("CP317_project");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(960, 540);
 
@@ -104,7 +104,7 @@ public class Project_main {
             builder.redirectErrorStream(true); // Redirect error stream to output stream
             Process process = builder.start();
 
-            // Optional: Read output from the C++ program
+            // Read output from the C++ program
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
