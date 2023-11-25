@@ -161,14 +161,18 @@ class name_file: public file_to_read {
         
         //checking , and space seperator
         //return if successful. not checking names since names can be weird.
-        if (line[9] == ',' && line[10] == ' ') {
-            //printf("success");
-            return 1;
-        } else {
-            //printf("failed last");
+        if (!(line[9] == ',' && line[10] == ' ')) {
             return 0;
         }
-        return 0;
+
+        //making sure name is only alpha and spaces
+        for (int i = 11; i<line.length(); i++) {
+            if ((!isalpha(line[i])) && line[i] != ' ' ){
+                return 0;
+            }
+        }
+
+        return 1;
     }
     
     
@@ -443,6 +447,8 @@ int main(int argc, char *argv[]) {
     string grade_file_location = "";
     if (argc == 2 || argc > 3) {
         printf("Please either use no command arguments to default to the files namefile.txt and coursefile.txt \nor 2 extra arguments in the format 'cp317_project name_file_location grade_file_location'");
+        name_file_location = "namefile.txt";
+        grade_file_location = "coursefile.txt";
     } else if (argc == 3) {
         //yOuR sTrInGs WeReNt DeClArEd In ThIs ScOpE
         name_file_location.append(argv[1]);
@@ -459,7 +465,7 @@ int main(int argc, char *argv[]) {
 
     name_file file1(name_file_location);
     grade_file file2(grade_file_location);
-    write_file file3("ouput.txt");
+    write_file file3("output.txt");
 
     //verify the files
     if (file1.verify_file() == 0) {
@@ -467,7 +473,7 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     if (file2.verify_file() == 0) {
-        printf("Your course file input is formatted improperly");
+        printf("Your course file input is formatted improperly\n");
         return 0;
     }
     
@@ -506,6 +512,6 @@ int main(int argc, char *argv[]) {
         file1.next_line();
         file2.go_to_start();
     }
-    printf("Successfully created the output file");
+    printf("Successfully created the output file\n");
     return 0;
 }

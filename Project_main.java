@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class SplitGUI {
+public class Project_main {
     public static void main(String[] args) {
         JFrame frame = new JFrame("SplitGUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -16,14 +16,14 @@ public class SplitGUI {
         splitPane.setLeftComponent(leftPanel);
 
         // File Input Buttons
-        JButton button1 = createFileInputButton("File Input 1");
+        JButton button1 = createFileInputButton("Name File Input");
         leftPanel.add(button1);
 
-        JButton button2 = createFileInputButton("File Input 2");
+        JButton button2 = createFileInputButton("Course File Input");
         leftPanel.add(button2);
 
-        JButton button3 = createFileInputButton("File Input 3");
-        leftPanel.add(button3);
+        //JButton button3 = createFileInputButton("File Input 3");
+        //leftPanel.add(button3);
 
         // Run C++ Program Button
         JButton runButton = new JButton("Run C++ Program");
@@ -35,7 +35,7 @@ public class SplitGUI {
         leftPanel.add(runButton);
 
         // Check C++ Output Button
-        JButton checkOutputButton = new JButton("Check C++ output.txt");
+        JButton checkOutputButton = new JButton("Check output");
         leftPanel.add(checkOutputButton);
 
         JPanel rightPanel = new JPanel();
@@ -98,7 +98,7 @@ public class SplitGUI {
 
     private static void runCppProgram() {
         try {
-            String cppProgram = "CP317_project.exe"; // Replace with the actual path
+            String cppProgram = "CP317_project.exe"; 
             ProcessBuilder builder = new ProcessBuilder(cppProgram);
             builder.directory(new File(System.getProperty("user.dir"))); // Set the working directory to current directory
             builder.redirectErrorStream(true); // Redirect error stream to output stream
